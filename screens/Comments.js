@@ -7,59 +7,53 @@ import {useNavigation} from '@react-navigation/native';
 function Comments() {
   const navigation = useNavigation();
   return (
-    <>
-      <ScrollView
-        contentContainerStyle={{
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#fff',
+      }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          width: '90%',
+          marginHorizontal: '5%',
+          height: 80,
           backgroundColor: '#fff',
-          minHeight: Dimensions.get('window').height,
         }}>
         <View
           style={{
-            flexDirection: 'row',
+            // width: '37%',
+            marginRight: '25%',
+            borderWidth: 0.1,
+            borderRadius: 10,
+            justifyContent: 'center',
             alignItems: 'center',
-            width: '90%',
-            marginHorizontal: '5%',
-            height: 50,
-            marginVertical: '5%',
+            padding: 5,
+
+            backgroundColor: '#fff',
           }}>
-          <View
-            style={{
-              // width: '37%',
-              marginRight: '25%',
-              borderWidth: 0.1,
-              borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: 5,
-
-              backgroundColor: '#fff',
-            }}>
-            <TouchableRipple onPress={() => navigation.navigate('Home')}>
-              <Image
-                source={backbtn}
-                style={{
-                  width: 30,
-                  height: 30,
-                }}
-              />
-            </TouchableRipple>
-          </View>
-          {/* <View style={{width: '37%'}}>
-          <IconButton
-            mode="outlined"
-            icon={backbtn}
-            size={20}
-            iconColor="#6F30A9"
-            onPress={() => {
-              console.log('back');
-            }}
-          />
-        </View> */}
-
-          <Text style={{fontSize: 18, alignSelf: 'center'}}>Comments</Text>
+          <TouchableRipple onPress={() => navigation.navigate('Home')}>
+            <Image
+              source={backbtn}
+              style={{
+                width: 30,
+                height: 30,
+              }}
+            />
+          </TouchableRipple>
         </View>
 
-        <View style={{height: '80%', marginBottom: '20%'}}>
+        <Text style={{fontSize: 18, alignSelf: 'center'}}>Comments</Text>
+      </View>
+      <ScrollView
+        removeClippedSubviews={true}
+        overScrollMode="never"
+        contentContainerStyle={{
+          backgroundColor: '#fff',
+          // minHeight: Dimensions.get('window').height,
+        }}>
+        <View style={{marginBottom: '20%'}}>
           <CardDesign />
           <CardDesign />
           <CardDesign />
@@ -72,7 +66,6 @@ function Comments() {
           position: 'absolute',
           bottom: 0,
           width: '100%',
-          height: '10%',
           padding: 10,
           flexDirection: 'row',
           alignItems: 'center',
@@ -89,8 +82,7 @@ function Comments() {
             borderWidth: 0.1,
           }}
           multiline={true}
-          multilineMaxHeight={100}
-          theme={{}}
+          maxLength={500}
         />
         <View
           style={{
@@ -107,7 +99,7 @@ function Comments() {
           />
         </View>
       </View>
-    </>
+    </View>
   );
 }
 export default Comments;
